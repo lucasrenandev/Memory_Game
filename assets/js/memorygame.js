@@ -55,17 +55,17 @@ cardArray.sort(() => 0.5 - Math.random()).splice(0, cardArray)
 
 // SELECIONANDO OS ELEMENTOS HTML
 const cardContainerDisplay = document.getElementById("cardContainer")
+const resultContainerDisplay = document.getElementById("resultContainer")
 const resultDisplay = document.getElementById("result")
 const buttonRefresh = document.getElementById("refresh")
 const title = document.getElementById("title")
 const paragraph = document.getElementById("paragraph")
 const errorDisplay = document.getElementById("error")
-const resultContainerDisplay = document.getElementById("resultContainer")
 
 // VARIÁVEIS DE APOIO PARA O JOGO
-let cardsEscolhido = []
-let cardsEscolhidoIds = []
-let cardsGanho = []
+let cardsChosen = []
+let cardsChosenIds = []
+let cardsWon = []
 let cardsError = []
 
 // FUNÇÃO PARA CRIAR OS CARDS DINÂMICAMENTE
@@ -90,8 +90,8 @@ buttonRefresh.addEventListener("click", function() {
 // FUNÇÃO PARA OS EVENTOS DO JOGO
 function checkMatch() {
     const cards = document.querySelectorAll("#cardContainer img")
-    const optionOneId = cardsEscolhidoIds[0]
-    const optionTwoId = cardsEscolhidoIds[1]
+    const optionOneId = cardsChosenIds[0]
+    const optionTwoId = cardsChosenIds[1]
 
     if(optionOneId === optionTwoId) {
         cards[optionOneId].setAttribute("src", "assets/images/blank.png")
@@ -99,29 +99,29 @@ function checkMatch() {
         window.alert("Você clicou na mesma imagem!")
     }
     
-    else if(cardsEscolhido[0] == cardsEscolhido[1]) {
+    else if(cardsChosen[0] == cardsChosen[1]) {
         cards[optionOneId].setAttribute("src", "assets/images/white.png")
         cards[optionTwoId].setAttribute("src", "assets/images/white.png")
         cards[optionOneId].removeEventListener("click", flipCard)
         cards[optionTwoId].removeEventListener("click", flipCard)
-        cardsGanho.push(cardsEscolhido)
+        cardsWon.push(cardsChosen)
         window.alert("ACERTOU!!!")
     }
 
     else {
         cards[optionOneId].setAttribute("src", "assets/images/blank.png")    
         cards[optionTwoId].setAttribute("src", "assets/images/blank.png")
-        cardsError.push(cardsEscolhido)
+        cardsError.push(cardsChosen)
         window.alert("ERROU, tente novamente!")    
     }
 
-    resultDisplay.textContent = cardsGanho.length
+    resultDisplay.textContent = cardsWon.length
     errorDisplay.textContent = cardsError.length
-    cardsEscolhido = []
-    cardsEscolhidoIds = []
+    cardsChosen = []
+    cardsChosenIds = []
 
-    if(cardsGanho.length == cardArray.length / 2) {
-        resultDisplay.textContent = cardsGanho.length
+    if(cardsWon.length == cardArray.length / 2) {
+        resultDisplay.textContent = cardsWon.length
         cardContainerDisplay.style.display = "none"
         title.style.display = "none"
         paragraph.style.display = "none"
@@ -135,11 +135,11 @@ function checkMatch() {
 // FUNÇÃO PARA SELECIONAR OS CARDS POR IDS
 function flipCard() {
     const cardId = this.getAttribute("data-id")
-    cardsEscolhido.push(cardArray[cardId].name)
-    cardsEscolhidoIds.push(cardId)
+    cardsChosen.push(cardArray[cardId].name)
+    cardsChosenIds.push(cardId)
     this.setAttribute("src", cardArray[cardId].img)
 
-    if(cardsEscolhido.length == 2){
+    if(cardsChosen.length == 2){
         setTimeout(checkMatch, 150)
     }
 
