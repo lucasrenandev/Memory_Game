@@ -138,12 +138,13 @@ function flipCard() {
     cardsChosen.push(cardArray[cardId].name)
     cardsChosenIds.push(cardId)
     this.setAttribute("src", cardArray[cardId].img)
-
+    
     if(cardsChosen.length == 2){
-        setTimeout(checkMatch, 150)
+        setTimeout(checkMatch, 200)
     }
 
-    if(cardId.length == 1) {
+    if(cardsChosen.length == 1) {
         paragraph.style.visibility = "hidden"
     }
+
 }
