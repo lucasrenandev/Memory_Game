@@ -50,7 +50,7 @@ const cardArray = [
     },
 
 ]
-// ORDENANDO DE FORMA ALEATÓRIA O ARRAY
+// ORDENANDO O ARRAY DE FORMA ALEATÓRIA
 cardArray.sort(() => 0.5 - Math.random()).splice(0, cardArray)
 
 // SELECIONANDO OS ELEMENTOS HTML
@@ -79,10 +79,10 @@ function createCards() {
     }
 
 }
-// CHAMANDO A FUNÇÃO CRIAR OS CARDS
+// CHAMANDO A FUNÇÃO CRIAR CARDS
 createCards()
 
-// FUNÇÃO PARA O RECARREGAMENTO DA PÁGINA 
+// FUNÇÃO PARA JOGAR NOVAMENTE 
 buttonRefresh.addEventListener("click", function() {
     location.reload()
 })
@@ -123,11 +123,11 @@ function checkMatch() {
     if(cardsWon.length == cardArray.length / 2) {
         resultDisplay.textContent = cardsWon.length
         cardContainerDisplay.style.display = "none"
-        title.style.display = "none"
+        title.textContent = "Fim de Jogo!"
+        title.style.fontSize = "2.5em"
         paragraph.style.display = "none"
         resultContainerDisplay.style.flexDirection = "column"
         resultContainerDisplay.style.gap = "10px"
-        resultContainerDisplay.style.fontSize = "1.8em"
         buttonRefresh.style.display = "block"
     }
 }
