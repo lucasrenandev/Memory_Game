@@ -53,7 +53,7 @@ const cardArray = [
 // ORDENANDO O ARRAY DE FORMA ALEATÓRIA
 cardArray.sort(() => 0.5 - Math.random()).splice(0, cardArray)
 
-// SELECIONANDO OS ELEMENTOS HTML
+// SELECIONANDO OS ELEMENTOS HTML E ATRIBUINDO EM SUAS VARIÁVEIS
 const cardContainerDisplay = document.getElementById("cardContainer")
 const resultContainerDisplay = document.getElementById("resultContainer")
 const resultDisplay = document.getElementById("result")
