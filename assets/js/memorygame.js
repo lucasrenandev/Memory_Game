@@ -57,10 +57,10 @@ cardArray.sort(() => 0.5 - Math.random()).splice(0, cardArray)
 const cardContainerDisplay = document.getElementById("cardContainer")
 const resultContainerDisplay = document.getElementById("resultContainer")
 const resultDisplay = document.getElementById("result")
+const errorDisplay = document.getElementById("error")
 const buttonRefresh = document.getElementById("refresh")
 const title = document.getElementById("title")
 const paragraph = document.getElementById("paragraph")
-const errorDisplay = document.getElementById("error")
 
 // VARIÁVEIS DE APOIO PARA O JOGO
 let cardsChosen = []
